@@ -72,14 +72,14 @@ const data = [
     {
         id: 11,
         name: 'java',
-        image: 'images/java.jpg',
+        image: 'images/java.png',
         isWaiting: false,
         isDone: false,
     },
     {
         id: 12,
         name: 'java',
-        image: 'images/java.jpg',
+        image: 'images/java.png',
         isWaiting: false,
         isDone: false,
     },
