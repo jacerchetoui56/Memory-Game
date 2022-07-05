@@ -69,6 +69,7 @@ function App() {
     setTimes(1)
     setFlippedImg('')
     setWin(false)
+    setAttemps(0)
   }
 
 
