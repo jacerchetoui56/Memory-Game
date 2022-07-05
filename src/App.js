@@ -10,6 +10,8 @@ function App() {
   const [flippedImg, setFlippedImg] = useState('')
   const [start, setStart] = useState(false)
   const [win, setWin] = useState(false)
+  const [attemps, setAttemps] = useState(0)
+
   useEffect(() => {
     setData(prev => prev.sort(() => Math.random() - 0.5))
   }, [])
@@ -24,6 +26,7 @@ function App() {
       }))
     }
     else if (times === 2) {
+      setAttemps(prev => prev + 1)
       setData(prev => prev.map(card => {
         return card.id === id ? { ...card, isWaiting: true } : card
       }))
@@ -76,6 +79,9 @@ function App() {
         <h1>
           Memory Game
         </h1>
+        {
+          start && <p>Attemps : {attemps}</p>
+        }
         {!start && <p>Train you memory and guess the similar images</p>}
       </header>
       {!start ?
