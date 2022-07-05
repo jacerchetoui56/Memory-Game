@@ -1,0 +1,45 @@
+
+
+** we are going to have some couples of images of programming languages 
+** the rules are so simple , you just have to guess the couples and the game finishes when you guess them all
+
+
+
+
+==================== Programming method ================
+
+
+
+** every card will have : 
+                    - id (needed in jsx for iteration)
+                    -image name 
+                    -actual image 
+                    -isDone (to keep the done cards flipped)
+                    -isWaiting (to toggle the className and flip the card) 
+
+++ states and variables : 
+                    - data : it hold all the informations of the cards
+                    - flippedImg : the name of the current flipped image
+                    - times : it is the number of times the player flipes an image it can be 0 or 1 or 2
+                        and it turns to 0 everytime the player guesses 
+                     
+
+** story of the algorithm (how it works)
+- the player clicks on a first card 
+        -> passing the id and the name of the clicked card
+        -> time++ ==> times = 1
+        -> flipedImg = name of fliped card
+        -> data[id].isWaiting = true ===> toggling className to flip the card
+
+- the player clicks on the second card 
+        -> passing the id and the name of the clicked card
+        -> times++ ==> times = 2
+        -> conditions : 
+                - if (data[id].imageName === flippedImg) => - every data[id].imageName === flipedImg => isDone=true
+                                                            - times=0
+                                                            - flipedImg=''
+
+                - else =>   - times=0
+                            - flipedImg = ''
+                            - for every card => isWaiting = false
+                        
