@@ -11,6 +11,7 @@ function App() {
   const [start, setStart] = useState(false)
   const [win, setWin] = useState(false)
   const [attemps, setAttemps] = useState(0)
+  const [record, setRecord] = useState(JSON.parse(localStorage.getItem('record')) || null)
 
   useEffect(() => {
     setData(prev => prev.sort(() => Math.random() - 0.5))
@@ -56,6 +57,10 @@ function App() {
       }, 600);
     }
   }
+  if (win && (attemps < record || record === null)) {
+    setRecord(attemps)
+    localStorage.setItem('record', JSON.stringify(attemps))
+  }
 
   function reset() {
     setData(prev => prev.map(card => {
@@ -75,15 +80,17 @@ function App() {
 
   return (
     <div className="App">
-      {win && <Confetti />}
+      {win && <Confetti
+        width={window.innerWidth}
+      />}
       <header className='header'>
         <h1>
           Memory Game
         </h1>
         {
-          start && <p>Attemps : {attemps}</p>
+          start && <p>Attemps : {attemps} {record && `(record : ${record})`}</p>
         }
-        {!start && <p>Train you memory and guess the similar images</p>}
+        {!start && <p>Train you memory and guess the similar images !</p>}
       </header>
       {!start ?
         <div className='start-btn'>
