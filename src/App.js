@@ -82,6 +82,7 @@ function App() {
     <div className="App">
       {win && <Confetti
         width={window.innerWidth}
+        height={window.innerHeight}
       />}
       <header className='header'>
         <h1>
